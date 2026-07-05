@@ -284,14 +284,13 @@ def publish_to_pypi(root: Path, dry_run: bool = False) -> None:
 
     print("\nPublishing to PyPI...")
 
-    # Run uv publish
-    cmd = ["uv", "publish"]
-
-    # Add token if available
-    if token:
-        cmd.extend(["--token", token])
-
-    run_command(cmd, cwd=root)
+    # uv publish reads UV_PUBLISH_TOKEN from the environment; never pass the
+    # token on the command line (run_command echoes commands, which would leak
+    # it into logs).
+    env = os.environ.copy()
+    env.setdefault("UV_PUBLISH_TOKEN", token)
+    print("Running: uv publish")
+    subprocess.run(["uv", "publish"], cwd=root, env=env, check=True)
     print("  ✓ Package published to PyPI")
 
 
