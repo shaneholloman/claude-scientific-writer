@@ -85,7 +85,7 @@ async def generate_paper(
         effort_level: Effort level that determines the model to use (default: "medium"):
             - "low": Uses Claude Haiku 4.5 (fastest, most economical)
             - "medium": Uses Claude Opus 4.8 (balanced, premium) [default]
-            - "high": Uses Claude Fable 5 (most capable)
+            - "high": Uses Claude Opus 4.8 (most capable)
         data_files: Optional list of data file paths to include
         cwd: Optional working directory (defaults to package parent directory)
         track_token_usage: If True, track and return token usage in the final result

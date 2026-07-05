@@ -444,7 +444,7 @@ async def generate_paper(
 ) -> AsyncGenerator[Dict[str, Any], None]
 ```
 
-When `model` is omitted, it is resolved from `effort_level` (`low` = Claude Haiku 4.5, `medium` = Claude Opus 4.8, `high` = Claude Fable 5). See the [API Reference](API.md#generate_paper) for full parameter details.
+When `model` is omitted, it is resolved from `effort_level` (`low` = Claude Haiku 4.5, `medium` = Claude Opus 4.8, `high` = Claude Opus 4.8). See the [API Reference](API.md#generate_paper) for full parameter details.
 
 **Type-Safe Models:**
 ```python

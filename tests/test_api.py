@@ -10,14 +10,15 @@ class TestEffortLevelModels:
     def test_three_effort_levels_exist(self):
         assert set(api.EFFORT_LEVEL_MODELS) == {"low", "medium", "high"}
 
-    def test_effort_levels_map_to_distinct_models(self):
-        """medium and high collapsing to the same model makes the tiers meaningless."""
-        assert len(set(api.EFFORT_LEVEL_MODELS.values())) == 3
-
     def test_effort_level_model_assignments(self):
         assert api.EFFORT_LEVEL_MODELS["low"] == "claude-haiku-4-5"
         assert api.EFFORT_LEVEL_MODELS["medium"] == "claude-opus-4-8"
-        assert api.EFFORT_LEVEL_MODELS["high"] == "claude-fable-5"
+        assert api.EFFORT_LEVEL_MODELS["high"] == "claude-opus-4-8"
+
+    def test_no_effort_level_uses_fable(self):
+        """Project policy: Opus 4.8 is the top tier; nothing selects Fable."""
+        for model in api.EFFORT_LEVEL_MODELS.values():
+            assert "fable" not in model.lower()
 
     def test_map_is_shared_with_core(self):
         """One source of truth: api re-exports the map defined in core."""

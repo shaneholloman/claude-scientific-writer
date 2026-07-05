@@ -61,7 +61,7 @@ async def generate_paper(
 | `output_dir` | `str` | No | `None` | Custom output directory. Defaults to `cwd/writing_outputs` |
 | `api_key` | `str` | No | `None` | Anthropic API key. Defaults to `ANTHROPIC_API_KEY` env var |
 | `model` | `str` | No | `None` | Explicit Claude model to use. If provided, overrides `effort_level`; otherwise the model is resolved from `effort_level` |
-| `effort_level` | `"low" \| "medium" \| "high"` | No | `"medium"` | Effort level that determines the model: `low` = Claude Haiku 4.5, `medium` = Claude Opus 4.8, `high` = Claude Fable 5 |
+| `effort_level` | `"low" \| "medium" \| "high"` | No | `"medium"` | Effort level that determines the model: `low` = Claude Haiku 4.5, `medium` = Claude Opus 4.8, `high` = Claude Opus 4.8 |
 | `data_files` | `List[str]` | No | `None` | List of file paths to include in the paper |
 | `cwd` | `str` | No | `None` | Working directory. Defaults to the current working directory |
 | `track_token_usage` | `bool` | No | `False` | If True, track and return token usage in the final result |
@@ -524,7 +524,7 @@ By default, the model is chosen from `effort_level`:
 |--------------|-------|
 | `low` | `claude-haiku-4-5` (fastest, most economical) |
 | `medium` (default) | `claude-opus-4-8` (balanced, premium) |
-| `high` | `claude-fable-5` (most capable) |
+| `high` | `claude-opus-4-8` (most capable) |
 
 ```python
 # Choose a model via effort level

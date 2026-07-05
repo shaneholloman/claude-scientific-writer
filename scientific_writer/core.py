@@ -13,11 +13,12 @@ load_dotenv()
 
 logger = logging.getLogger(__name__)
 
-# Single source of truth for effort-level model selection (used by both API and CLI)
+# Single source of truth for effort-level model selection (used by both API and CLI).
+# Project policy: Claude Opus 4.8 is the top tier for both medium and high effort.
 EFFORT_LEVEL_MODELS = {
     "low": "claude-haiku-4-5",
     "medium": "claude-opus-4-8",
-    "high": "claude-fable-5",
+    "high": "claude-opus-4-8",
 }
 
 
